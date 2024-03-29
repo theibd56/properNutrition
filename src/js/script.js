@@ -92,8 +92,8 @@ window.addEventListener('DOMContentLoaded', () => {
             seconds.innerHTML = getZero(t.sec);
 
             daysText.textContent = deсNum(t.d, ['день', 'дня', 'дней']);
-            hoursText.textContent = deсNum(t.sec, ['час', 'часа', 'часов']);
-            minutesText.textContent = deсNum(t.sec, ['минута', 'минуты', 'минут']);
+            hoursText.textContent = deсNum(t.h, ['час', 'часа', 'часов']);
+            minutesText.textContent = deсNum(t.min, ['минута', 'минуты', 'минут']);
             secondsText.textContent = deсNum(t.sec, ['секунда', 'секунды', 'секунд']);
 
             if (t.total <= 0) {
