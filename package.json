@@ -17,6 +17,7 @@
     "gulp-imagemin": "^7.1.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^5.0.0",
+    "json-server": "^1.0.0-alpha.23",
     "sass": "^1.70.0"
   },
   "browserslist": [
