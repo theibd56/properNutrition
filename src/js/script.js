@@ -443,4 +443,74 @@ window.addEventListener('DOMContentLoaded', () => {
             indicatorsOpacity();
         })
     })
+
+    // calculator
+
+    const result = document.querySelector('.calculating__result span');
+    let sex = 'female',
+        height, weight, age,
+        ratio = 1.375;
+
+    function calcCalorie() {
+        if (!sex || !height || !weight || !age || !ratio) {
+            result.textContent = '000.000';
+            return;
+        }
+
+        if (sex == 'female') {
+            result.textContent = Math.round((447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age)) * ratio);
+        } else {
+            result.textContent = Math.round((88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age)) * ratio);
+        }
+    }
+
+    calcCalorie();
+
+    function getStaticInformation(parentSelector, activeClass) {
+        const elements = document.querySelectorAll(`${parentSelector} div`);
+
+        elements.forEach(elem => {
+            elem.addEventListener('click', (event) => {
+                if(event.target.getAttribute('data-ratio')) {
+                    ratio = +event.target.getAttribute('data-ratio');
+                } else {
+                    sex = event.target.getAttribute('id')
+                }
+    
+                elements.forEach(elem => {
+                    elem.classList.remove(activeClass);
+                });
+    
+                event.target.classList.add(activeClass);
+    
+                calcCalorie();
+            });
+        })
+    }
+
+    getStaticInformation('#gender', 'calculating__choose-item_active');
+    getStaticInformation('#physical__activity', 'calculating__choose-item_active');
+
+    function getDinamicInformation(selector) {
+        const input = document.querySelector(selector);
+
+        input.addEventListener('input', () => {
+            switch(input.getAttribute('id')) {
+                case 'height':
+                    height = +input.value;
+                    break;
+                case 'weight':
+                    weight = +input.value;
+                    break;
+                case 'age':
+                    age = +input.value;
+                    break;
+            }
+            calcCalorie();
+        });
+    }
+
+    getDinamicInformation('#height');
+    getDinamicInformation('#weight');
+    getDinamicInformation('#age');
 });
