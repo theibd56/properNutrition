@@ -1,14 +1,14 @@
-function slider() {
+function slider({container, slide, nextArrow, prevArrow, totalCounter, currentCounter, wrapper, field}) {
     
-    const slider = document.querySelector('.offer__slider'),
-          slidesWrapper = document.querySelector('.offer__slider-wrapper'),
-          slidesField = slidesWrapper.querySelector('.offer__slider-inner'),
-          slides = slidesField.querySelectorAll('.offer__slide'),
-          widthSlide = window.getComputedStyle(slidesWrapper).width;
-          prev = document.querySelector('.offer__slider-prev'),
-          next = document.querySelector('.offer__slider-next'),
-          total = document.querySelector('#total'),
-          current = document.querySelector('#current');
+    const slider = document.querySelector(container),
+          slidesWrapper = document.querySelector(wrapper),
+          slidesField = slidesWrapper.querySelector(field),
+          slides = slidesField.querySelectorAll(slide),
+          widthSlide = window.getComputedStyle(slidesWrapper).width,
+          prev = document.querySelector(prevArrow),
+          next = document.querySelector(nextArrow),
+          total = document.querySelector(totalCounter),
+          current = document.querySelector(currentCounter);
 
     let slideIndex = 1,
         offset = 0;
@@ -146,4 +146,4 @@ function slider() {
     })
 }
 
-module.exports = slider;
+export default slider;
